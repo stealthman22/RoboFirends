@@ -2,6 +2,7 @@ import React from 'react';
 import Card from './Card';
 
 const CardLsit = ({ robots }) => {
+    // Moves through the respective indexes, and returns their values
     return (
         <div>
             <Card id={robots[0].id} name={robots[0].name} email={robots[0].email} />
@@ -12,3 +13,4 @@ const CardLsit = ({ robots }) => {
 }
 
 export default CardLsit;
+
