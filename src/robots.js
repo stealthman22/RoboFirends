@@ -1,3 +1,4 @@
+// An array of objects makes looping straight foward
 export const robots = [{
         id: 1,
         name: 'Leanne Graham',
