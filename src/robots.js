@@ -13,7 +13,7 @@ export const robots = [{
     },
     {
         id: 3,
-        name: 'Clementine Bauch',
+        name: 'Clementina Bauch',
         username: 'Samantha',
         email: 'Nathan@yesenia.net'
     },
