@@ -22,6 +22,7 @@ export default CardLsit;
 
 // or
 
+// This also works
 /* const CardLsit = ({ robots }) => {
     // Moves through the respective indexes, and returns their values
 

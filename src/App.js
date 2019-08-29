@@ -52,5 +52,6 @@ class App extends Component {
 }
 
 
+// Dumb components and smart components
 
 export default App;
