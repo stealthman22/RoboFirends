@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from './Card';
 
-const CardLsit = ({ robots }) => {
+const CardList = ({ robots }) => {
     // Moves through the respective indexes, and returns their values
     const cardArray = robots.map((user, i) => {
         return <Card key={i}
@@ -18,7 +18,7 @@ const CardLsit = ({ robots }) => {
 }
 
 
-export default CardLsit;
+export default CardList;
 
 // or
 
