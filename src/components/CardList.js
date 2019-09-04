@@ -1,19 +1,37 @@
 import React from 'react';
 import Card from './Card';
 
-const CardList = ({ robots }) => {
+const CardList = ({
+    robots
+}) => {
+    /*
+    // lets throw and error
+    if (true) {
+        throw new Error('Noooooooooo!');
+    } */
     // Moves through the respective indexes, and returns their values
     const cardArray = robots.map((user, i) => {
-        return <Card key={i}
-            id={robots[i].id}
-            name={robots[i].name}
-            email={robots[i].email} />
+        return <Card key = {
+            i
+        }
+        id = {
+            robots[i].id
+        }
+        name = {
+            robots[i].name
+        }
+        email = {
+            robots[i].email
+        }
+        />
     })
-    return (
-        <div>
+    return ( <
+        div >
 
-            {cardArray}
-        </div>
+        {
+            cardArray
+        } <
+        /div>
     )
 }
 
