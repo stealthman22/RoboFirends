@@ -10,6 +10,7 @@ class ErrorBoundary extends Component {
     }
 
 
+    // This lifecycle hook is run if anything errors out.
     componentDidCatch(error, info) {
         this.setState({ hasError: true })
     }
