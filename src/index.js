@@ -5,9 +5,10 @@ import './index.css';
 import App from './containers/App'
 import * as serviceWorker from './serviceWorker';
 import 'tachyons';
-
-
-
+import { Provider } from 'react-redux';
+//  Creating the redux store 
+import { CreateStore } from redux;
+import { SearchRobots } from './reducers.js';
 ReactDOM.render(
         <App />, document.getElementById('root'));
 
