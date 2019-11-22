@@ -17,3 +17,7 @@ export const searchRobots = (state = initialState, action = {}) => {
             return state;
     }
 }
+
+
+// or  
+// return {...state, { searchField: action.payload }};
