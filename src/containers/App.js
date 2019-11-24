@@ -48,7 +48,6 @@ class App extends Component {
     }
 
     componentDidMount() {
-
         // Goes to that location fetches the file, receives something, and converts it to json)
         fetch('https://jsonplaceholder.typicode.com/users').then(response => {
             return response.json();
