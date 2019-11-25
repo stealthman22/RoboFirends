@@ -9,78 +9,46 @@ import Scroll from '../components/Scroll';
 import ErrorBoundary from '../components/ErrorBoundary';
 
 // redux
-import { setSearchField } from '../actions';
+import { setSearchField, requestRobots } from '../actions';
+
 
 const mapStateToProps = state => {
     return {
-        searchField: state.searchField
+        searchField: state.searchRobots.searchField,
+        // Updating state for redux thunk functionality
+        robots: state.requestRobots.robots,
+        isPending: state.requestRobots.isPending,
+        error: state.requestRobots.error
     }
 }
 
 // dispatch triggers an action
 const mapDispatchToProps = (dispatch) => {
     //receives an event and dispatches the action setSearchField
-    return { onSearchChange: (event) => dispatch(setSearchField(event.target.value)) }
+    return {
+        onSearchChange: (event) => dispatch(setSearchField(event.target.value)),
+        onRequestRobots: () => requestRobots(dispatch)
+    }
 }
 
-
-/* const App = () => {
-    return (
-        <div className='tc'>
-            <h1>RoboFriends</h1>
-            <SearchBox />
-            <CardList className='tc' robots={robots} />
-        </div>
-    );
-
-} */
-
-// or
 // Adding state
 class App extends Component {
-    constructor() {
-        super()
-        this.state = {
-            robots: [],
-            //searchfield: ''
-        }
-        console.log('Constructor');
-    }
+    // constructor not needed again as redux is now handling the state 
 
     componentDidMount() {
-        // Goes to that location fetches the file, receives something, and converts it to json)
-        fetch('https://jsonplaceholder.typicode.com/users').then(response => {
-            return response.json();
-        }).then(users => (this.setState({ robots: users })))
-        /* {
-   this.setState({ robots: users });
-}); */
-
-        //or 
-        // fetch('https://jsonplaceholder.typicode.com/users').then(response => response.json()).then(users => this.setState({ robots: users }));
-
-
+        this.props.onRequestRobots();
     }
-
-    // Event function for searchbox
-    /* onSearchChange = (e) => {
-        // must for state to be updated.
-        this.setState({ searchfield: e.target.value })
-    } */
-
     render() {
         // Moved from the onSearchChange method so that the render and return value can access the filterArray.
 
-        const { robots, /* searchfield  */ } = this.state
-        const { searchField, onSearchChange } = this.props;
-        const filterArray = robots.filter(robot => robot.name.toLowerCase().includes(searchField.toLowerCase()));
-        console.log('Render');
-        //  if (robots === 0) or
-        if (!robots.length) {
-            return <h1 style={{ height: '90vh' }}> Loading </h1>
-        } else {
-            return (
+        const { searchField, onSearchChange, robots, isPending } = this.props;
+        const filterArray = robots.filter(robot => {
+            return robot.name.toLowerCase().includes(searchField.toLowerCase())
+        })
+        return isPending ?
+            <h1 style={{ height: '90vh' }}> Loading </h1> :
 
+            (
                 <div className='tc' >
                     <h1 className='f1' > RoboFriends </h1>
                     <SearchBox searchChange={onSearchChange} />
@@ -92,9 +60,6 @@ class App extends Component {
                     </ErrorBoundary>
                 </div>
             );
-        }
-
-
     }
 }
 
