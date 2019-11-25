@@ -27,7 +27,7 @@ const mapDispatchToProps = (dispatch) => {
     //receives an event and dispatches the action setSearchField
     return {
         onSearchChange: (event) => dispatch(setSearchField(event.target.value)),
-        onRequestRobots: () => requestRobots(dispatch)
+        onRequestRobots: () => dispatch(requestRobots())
     }
 }
 
