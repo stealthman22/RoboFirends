@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 //  Creating the redux store 
 // add middleware access to the store
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { createLogger } from 'redux-logger';
-import { searchRobots } from './reducers';
+import { searchRobots, requestRobots } from './reducers';
 import thunkMiddleware from 'redux-thunk';
 
 import './index.css';
@@ -17,9 +17,10 @@ import 'tachyons';
 
 
 // Creating a store
-const store = createStore(searchRobots, applyMiddleware(thunkMiddleware, logger));
-
 const logger = createLogger();
+
+const rootReducer = combineReducers({ searchRobots, requestRobots });
+const store = createStore(rootReducer, applyMiddleware(thunkMiddleware, logger));
 
 ReactDOM.render(
         <Provider store={store}>
